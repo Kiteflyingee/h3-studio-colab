@@ -17,6 +17,12 @@
 - **作为 AI Agent Skill 安装**：装进 Antigravity、Claude Code、Codex、Cursor 等支持 Skills 的工具里，通过 `/h3-studio-colab` 或自然语言对话自动编排任务、出关键帧对比图确认并渲染成片。
 - **作为独立 CLI 工具运行**：直接在终端执行 [`scripts/h3studio.py`](scripts/h3studio.py) 子命令，手动控制每一步参数与会话。
 
+<p align="center">
+  <img src="assets/github_showcase_h3_ripple.gif" alt="WepeNerd H3 Ripple 视频角色替换实机演示（上：原片 / 下：双猫设定图复刻）" width="576" />
+  <br />
+  <sub>实机复刻演示：两步确认式关键帧对齐 + WepeNerd H3 Ripple 6 步扩散（上：原片 · 下：双猫设定图替换成片，1:1 保留逐帧动作与背景）</sub>
+</p>
+
 ---
 
 ## 为什么做这个项目

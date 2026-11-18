@@ -43,29 +43,51 @@ colab auth login
 
 ### 方式一：安装为 AI Agent Skill
 
-支持所有兼容 `SKILL.md` 规范的客户端（Antigravity、Claude Code、Codex、Cursor 等）。
+支持 **Claude Code**、**Codex**、**Antigravity** 等支持 `SKILL.md` 规范的客户端，按你平时使用的工具克隆到对应目录并装好 Python 依赖即可：
 
-**1. 使用 `skills` CLI 安装**
+| 工具 | 全局技能目录（所有项目通用） | 项目级技能目录（仅当前工程生效） | 对话调用方式 |
+| :--- | :--- | :--- | :--- |
+| **Claude Code** | `~/.claude/skills/h3-studio-colab` | `.claude/skills/h3-studio-colab` | `/h3-studio-colab` 或自然语言 |
+| **Codex** | `~/.codex/skills/h3-studio-colab` | `.agents/skills/h3-studio-colab` | `$h3-studio-colab` 或自然语言 |
+| **Antigravity** | `~/.gemini/config/skills/h3-studio-colab` | `.agents/skills/h3-studio-colab` | `/h3-studio-colab` 或自然语言 |
+
+**Claude Code 安装**
+
+```bash
+# 全局安装（若只需当前项目生效，把路径换成 .claude/skills/h3-studio-colab）
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.claude/skills/h3-studio-colab
+pip install -r ~/.claude/skills/h3-studio-colab/requirements.txt
+```
+
+**Codex 安装**
+
+```bash
+# 全局安装（若只需当前仓库生效，把路径换成 .agents/skills/h3-studio-colab）
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.codex/skills/h3-studio-colab
+pip install -r ~/.codex/skills/h3-studio-colab/requirements.txt
+```
+
+**Antigravity 安装**
+
+```bash
+# 全局安装（本机所有工作区可用）
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.gemini/config/skills/h3-studio-colab
+pip install -r ~/.gemini/config/skills/h3-studio-colab/requirements.txt
+
+# 或仅安装到当前工作区
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git .agents/skills/h3-studio-colab
+pip install -r .agents/skills/h3-studio-colab/requirements.txt
+```
+
+**通过 `skills` CLI 安装（通用）**
 
 ```bash
 npx skills add Kiteflyingee/h3-studio-colab
 ```
 
-**2. 或直接用 Git 克隆到对应的技能目录**
+**安装后在 Agent 对话里怎么用**
 
-```bash
-# Antigravity / Codex / Cursor 等（当前工作区安装；全局可改为 ~/.agents/skills/h3-studio-colab）
-git clone https://github.com/Kiteflyingee/h3-studio-colab.git .agents/skills/h3-studio-colab
-pip install -r .agents/skills/h3-studio-colab/requirements.txt
-
-# Claude Code（全局安装；单项目可改为 .claude/skills/h3-studio-colab）
-git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.claude/skills/h3-studio-colab
-pip install -r ~/.claude/skills/h3-studio-colab/requirements.txt
-```
-
-**3. 在 Agent 对话里怎么用**
-
-安装完成后，在聊天框输入 `/h3-studio-colab` 或直接把视频/参考图发给 Agent 提需求即可，Agent 会按 [`SKILL.md`](SKILL.md) 里的流程自动组织任务清单并调用脚本：
+装好后直接用对应工具的技能指令唤醒，或者把源视频、参考图路径发给 Agent 描述需求，Agent 会按 [`SKILL.md`](SKILL.md) 里的流程自动生成配置并调用底层脚本：
 
 - **视频换人 / 换商品**：例如 *「把 `source.mp4` 里的主角换成 `role.png`，手里的瓶子换成 `product.png`，保持原视频镜头和背景」*。Agent 会自动先执行第一步切镜并生成「原帧 | 改后帧」对比图发给你检查，不会上来直接跑全片；某张关键帧不理想可以直接让它单张重抽，确认无误后再复用同一台热机合成整片。
 - **画风重制或原创短片**：例如 *「参考这两张设定图把原视频重制成 720P 2D 动画风格」*，或者 *「按这段分镜脚本出一条 3 镜头短片，先编译时间线给我看」*。

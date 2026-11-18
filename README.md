@@ -145,7 +145,7 @@ flowchart LR
 ```
 
 ```bash
-# 第一步：切分镜头并生成关键帧对比预览（*_compare.png），先检查人物和商品效果
+# 第一步：切分镜头并生成关键帧对比预览（*_compare.jpg），先检查人物和商品效果
 python scripts/h3studio.py remake-anchors examples/remake-v3.json --gpu L4 --allow-unverified
 
 # 如果只有某一张关键帧不满意，复用当前会话单独重抽这一张即可：

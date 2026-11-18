@@ -43,19 +43,48 @@ test_actual_remote_worker_renders_two_copy_variants_and_downloads_them (test_col
 ⬇️ <TEMP_DIR>
 ⬇️ <TEMP_DIR>
 ⬇️ <TEMP_DIR>
-⬇️ <TEMP_DIR>
-⬇️ <TEMP_DIR>
-⬇️ <TEMP_DIR>
+ok
+test_actual_worker_composes_director_shots_before_downloading (test_colab_remake_transport.ColabRemakeTransportTests.test_actual_worker_composes_director_shots_before_downloading) ... 🚀 启动 Colab CPU：h3skill-v3-15aef51b143e
+⬆️ 上传 2 个输入素材…
+[ 0.0 分] generating · a:done
+[ 0.0 分] composing · a:done b:done
+[ 0.0 分] finished · a:done b:done director-delivery:done
 ⬇️ <TEMP_DIR>
 ok
-test_actual_worker_composes_director_shots_before_downloading (test_colab_remake_transport.ColabRemakeTransportTests.test_actual_worker_composes_director_shots_before_downloading) ... 🚀 启动 Colab CPU：h3skill-v3-23d452f92589
-⬆️ 上传 2 个输入素材…
+test_local_sha256_dedup_copies_identical_artifact_without_second_download (test_colab_remake_transport.ColabRemakeTransportTests.test_local_sha256_dedup_copies_identical_artifact_without_second_download) ... [ 0.0 分] running · a:done b:done
+⬇️ <TEMP_DIR>
+ok
+test_remote_upload_dedup_and_skip_intermediates_save_bandwidth (test_colab_remake_transport.ColabRemakeTransportTests.test_remote_upload_dedup_and_skip_intermediates_save_bandwidth) ... ♻️ 复用 Colab 会话：shared
+⬆️ 上传 1 个输入素材…
+[ 0.0 分] starting
 [ 0.0 分] generating
-[ 0.0 分] generating · a:done
+[ 0.0 分] finished · variant001__remake_001:done variant001__remake_001_subtitles:done delivery:done
 ⬇️ <TEMP_DIR>
-[ 0.0 分] composing · a:done b:done
 ⬇️ <TEMP_DIR>
-[ 0.0 分] finished · a:done b:done director-delivery:done
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+♻️ 复用 Colab 会话：shared
+♻️ 复用远端已缓存的 1 个输入素材（0 字节重传）
+[ 0.0 分] starting
+[ 0.0 分] generating
+[ 0.0 分] finished · variant001__remake_001:done variant001__remake_001_subtitles:done delivery:done
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+♻️ 复用 Colab 会话：shared
+⬆️ 上传 1 个输入素材…
+[ 0.0 分] starting
+[ 0.0 分] generating
+[ 0.0 分] finished · variant001__remake_001:done variant001__remake_001_subtitles:done delivery:done
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
 ⬇️ <TEMP_DIR>
 ok
 test_download_paths_preserve_variants_and_reject_foreign_paths (test_colab_skill_routes.SkillRouteTests.test_download_paths_preserve_variants_and_reject_foreign_paths) ... ok
@@ -95,6 +124,9 @@ test_picture_reuses_fl2va_and_downloads_are_deduplicated (test_model_registry.Mo
 test_profiles_route_by_task (test_model_registry.ModelRegistryTests.test_profiles_route_by_task) ... ok
 test_lora_uses_fl2va_and_target_is_not_reordered (test_picture_profiles.PictureTests.test_lora_uses_fl2va_and_target_is_not_reordered) ... ok
 test_standalone_has_no_lora (test_picture_profiles.PictureTests.test_standalone_has_no_lora) ... ok
+test_both_skill_entrypoints_and_openai_yaml_exist (test_plugin_compat.PluginAndSkillCompatTests.test_both_skill_entrypoints_and_openai_yaml_exist) ... ok
+test_plugin_nested_script_forwards_to_root_cli (test_plugin_compat.PluginAndSkillCompatTests.test_plugin_nested_script_forwards_to_root_cli) ... ok
+test_project_and_plugin_versions_match (test_plugin_compat.PluginAndSkillCompatTests.test_project_and_plugin_versions_match) ... ok
 test_missing_bridge_is_reported (test_preflight.PreflightTests.test_missing_bridge_is_reported) ... ok
 test_missing_picture_lora_is_reported (test_preflight.PreflightTests.test_missing_picture_lora_is_reported) ... ok
 test_required_parameter_and_unknown_node (test_preflight.PreflightTests.test_required_parameter_and_unknown_node) ... ok
@@ -144,6 +176,6 @@ test_voice_references_and_seed_are_wired (test_tts.TTSTests.test_voice_reference
 test_confirmed_anchors_and_source_video_are_connected_to_ripple (test_video_edit.VideoEditTests.test_confirmed_anchors_and_source_video_are_connected_to_ripple) ... ok
 
 ----------------------------------------------------------------------
-Ran 88 tests in 5.258s
+Ran 93 tests in 7.189s
 
 OK

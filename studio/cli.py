@@ -153,6 +153,7 @@ def add_colab_options(parser):
     parser.add_argument('--install-models', action='store_true', default=True)
     parser.add_argument('--no-setup-runtime', dest='setup_runtime', action='store_false')
     parser.add_argument('--no-install-models', dest='install_models', action='store_false')
+    parser.add_argument('--download-intermediates', action='store_true', help='同时下载远端中间分镜切片与调试图谱（默认仅回传最终交付物以节省流量）')
 
 
 def add_commands(sub):

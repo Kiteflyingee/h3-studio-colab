@@ -114,7 +114,7 @@ class TwoStepRippleRemakeTests(unittest.TestCase):
                 fake_results['jobs'][job['id']] = {'status': 'done', 'artifacts': [{'path': str(gen)}], 'primary_index': 0}
             saved = finalize_anchors(aplan, folder, fake_results)
             self.assertEqual(len(saved), 2)
-            self.assertTrue(all(ed.is_file() and cmp_p.is_file() for ed, cmp_p in saved))
+            self.assertTrue(all(ed.is_file() and cmp_p.is_file() and cmp_p.suffix == '.jpg' for ed, cmp_p in saved))
             self.assertEqual(describe_media(saved[0][1])['width'], 256)
 
             # Step 2: attach confirmed anchors & compile lightweight 5-component H3 Ripple plan

@@ -195,16 +195,17 @@ def finalize_anchors(anchor_plan, destination, results):
             dst_png = destination / entry['edited']
             shutil.copy2(gen_path, dst_png)
             src_png = destination / entry['src']
-            cmp_png = anchors_dir / f'{aid}_compare.png'
+            cmp_jpg = anchors_dir / f'{aid}_compare.jpg'
+            (anchors_dir / f'{aid}_compare.png').unlink(missing_ok=True)
             if src_png.is_file():
                 src_info = describe_media(src_png)
                 w, h = src_info['width'], src_info['height']
                 ffmpeg([
                     '-i', src_png, '-i', dst_png,
                     '-filter_complex', f'[1:v]scale={w}:{h}[ed];[0:v][ed]hstack=inputs=2',
-                    '-frames:v', 1, cmp_png,
+                    '-frames:v', 1, '-q:v', '3', cmp_jpg,
                 ])
-            saved.append((dst_png, cmp_png if cmp_png.is_file() else None))
+            saved.append((dst_png, cmp_jpg if cmp_jpg.is_file() else None))
     return saved
 
 

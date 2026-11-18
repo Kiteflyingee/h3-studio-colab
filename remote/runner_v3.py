@@ -1,6 +1,7 @@
 """在选定 Colab VM 内运行共享执行器；自动按任务准备 ComfyUI、ComfyUI-WepeNerd 与锁定权重。"""
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -99,13 +100,25 @@ def execute_remake(args, base, set_stage=None):
             for jid, item in json.loads(path.read_text())['jobs'].items():
                 report['jobs'][name + '__' + jid] = item
     artifacts = []
+    inputs_cache = (base.parent.parent / 'inputs') if base.parent.name == 'runs' else None
     for path in sorted((base / 'remake').rglob('*')):
         if not path.is_file():
             continue
         if path.suffix in ('.json', '.srt'):
+            if not getattr(args, 'download_intermediates', False) and ('graphs' in path.parts or 'history' in path.parts):
+                continue
             artifacts.append({'kind': 'data', 'path': str(path), 'sha256': file_sha256(path), 'metadata': {}})
-        elif args.action == 'remake-anchors' and 'anchors' in path.parts and path.suffix.lower() == '.png':
-            artifacts.append({'kind': 'image', 'path': str(path), 'sha256': file_sha256(path), 'metadata': describe_media(path)})
+        elif args.action == 'remake-anchors' and 'anchors' in path.parts and path.suffix.lower() in ('.png', '.jpg', '.jpeg'):
+            sha = file_sha256(path)
+            if inputs_cache is not None and path.suffix.lower() == '.png' and not path.stem.endswith('_compare'):
+                inputs_cache.mkdir(parents=True, exist_ok=True)
+                cached_anchor = inputs_cache / f'{sha}{path.suffix.lower()}'
+                if not cached_anchor.is_file():
+                    try:
+                        os.link(path, cached_anchor)
+                    except OSError:
+                        shutil.copy2(path, cached_anchor)
+            artifacts.append({'kind': 'image', 'path': str(path), 'sha256': sha, 'metadata': describe_media(path)})
     videos = []
     for path in sorted(base.glob('remake-final*.mp4')):
         variant = path.stem.removeprefix('remake-final_') if path.stem != 'remake-final' else (rows[0][0] if rows else 'variant001')
@@ -207,6 +220,7 @@ def main():
     parser.add_argument('--attempt-id', default='start')
     parser.add_argument('--only')
     parser.add_argument('--with-dependents', action='store_true')
+    parser.add_argument('--download-intermediates', action='store_true')
     args = parser.parse_args()
     base = Path(args.manifest or args.request).resolve().parent
     status = base / 'status.json'

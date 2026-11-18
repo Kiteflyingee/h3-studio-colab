@@ -63,7 +63,7 @@
 
       <text x="20" y="114" fill="#6E7681"># 2. 先切镜头生成关键帧对比图，确认形象无误</text>
       <text x="20" y="134" fill="#79C0FF">$ python scripts/h3studio.py remake-anchors job.json --gpu L4</text>
-      <text x="20" y="154" fill="#3FB950">✓ 已保存 anchors/remake_001_compare.png (原帧 | 改后帧)</text>
+      <text x="20" y="154" fill="#3FB950">✓ 已保存 anchors/remake_001_compare.jpg (原帧 | 改后帧)</text>
 
       <text x="20" y="188" fill="#6E7681"># 3. 复用同一台热机渲染整片并合成字幕配音</text>
       <text x="20" y="208" fill="#79C0FF">$ python scripts/h3studio.py remake-render job.json --session s1 -o out.mp4</text>

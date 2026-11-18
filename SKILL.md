@@ -12,7 +12,7 @@ description: 通过 Google Colab CLI 调用云端 GPU 完成视频换人/换物�
 ### 工作流 1：🔥 爆款视频复刻（已有视频 → 换人 / 换商品 / 换画风 / 改口播字幕）
 
 - **1A. 同镜改版（黄金默认：保原片背景与运镜，换人物/换商品/换场景）——必须走「两步确认式」：**
-  1. **Step 1 生成关键帧预览并停下确认**：运行 `python scripts/h3studio.py remake-anchors request.json --gpu L4 --allow-unverified`。远端自动切段、抽取各镜头首/尾锚点帧，用 `P-H3-Image` + `QwenEditAlignComposite`（仿射对齐并逐像素锁死未改动背景）生成改后关键帧与 `原帧 | 改后帧` 左右对比图（`*_compare.png`）回传本机。**先把对比图展示给用户确认形象无误**（单张不满意加 `--only ID --session NAME` 秒级重抽，也可手动修图覆盖 `anchors/*.png`）。
+  1. **Step 1 生成关键帧预览并停下确认**：运行 `python scripts/h3studio.py remake-anchors request.json --gpu L4 --allow-unverified`。远端自动切段、抽取各镜头首/尾锚点帧，用 `P-H3-Image` + `QwenEditAlignComposite`（仿射对齐并逐像素锁死未改动背景）生成改后关键帧与 `原帧 | 改后帧` 轻量左右对比图（`*_compare.jpg`）回传本机。**先读取 `*_compare.jpg` 对比图展示给用户确认形象无误**（单张不满意加 `--only ID --session NAME` 秒级重抽，也可手动修图覆盖 `anchors/*.png`）。
   2. **Step 2 确认后扩散全片并合片**：用户确认后，运行 `python scripts/h3studio.py remake-render request.json --session NAME --confirmed --allow-unverified --output final.mp4`。自动复用热机中的 `FL2VA` 底模，通过 WepeNerd `H3 Ripple` **6 步 LCM** 将关键帧改动扩散至整段视频，串联新配音/字幕并拼接成片（未完成 Step 1 直接跑 Step 2 会被自动拦截保护点数）。
 - **1B. 跨画风 / 跨物种重制（如真人爆款 → 2D 拟人猫动画大片）**：
   - 在 `request.json` 中设 `"mode": "recreate"`，无需跑 Step 1，直接运行 `remake-render`：自动将相邻快切合并至 `6~9.4s` 黄金段、生成 `640p` 静音参考代理提速 4 倍，走 `Ref2VA` 重制并合片。

@@ -141,8 +141,9 @@ def run_remake_colab(args):
 
     if args.command == 'remake-anchors':
         final = result.get('jobs', {}).get('delivery', {}).get('artifacts', [])
-        previews = [a['path'] for a in final if a.get('kind') == 'image']
-        for p in previews:
+        images = [a['path'] for a in final if a.get('kind') == 'image']
+        compares = [p for p in images if Path(p).stem.endswith('_compare')]
+        for p in (compares or images):
             print('🖼️ 关键帧预览：', p)
         session = result.get('session', '')
         sess_flag = f' --session {session}' if session else ''

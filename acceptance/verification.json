@@ -15,7 +15,7 @@
       ],
       "exit_code": 0,
       "log": "unit-tests.txt",
-      "test_count": 88
+      "test_count": 93
     },
     "export-graphs": {
       "command": [

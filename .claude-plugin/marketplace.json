@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "h3-studio-colab",
+  "description": "H3 Studio Colab 插件源：调用 Google Colab GPU 完成视频换人改版、多镜头分镜生成与字幕配音合成。",
+  "owner": {
+    "name": "Kiteflyingee"
+  },
+  "plugins": [
+    {
+      "name": "h3-studio-colab",
+      "description": "通过 Google Colab CLI 调用云端 GPU 完成视频换人/换物改版（先出关键帧对比图确认、再渲染全片）、原创多镜头分镜生成与免 GPU 字幕配音合成。",
+      "version": "4.0.0",
+      "author": {
+        "name": "Kiteflyingee"
+      },
+      "homepage": "https://github.com/Kiteflyingee/h3-studio-colab",
+      "repository": "https://github.com/Kiteflyingee/h3-studio-colab",
+      "license": "MIT",
+      "category": "media",
+      "source": "./"
+    }
+  ]
+}

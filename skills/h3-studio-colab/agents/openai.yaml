@@ -1,0 +1,8 @@
+interface:
+  display_name: "H3 Studio Colab"
+  short_description: "通过 Google Colab GPU 完成视频换人改版、多镜头分镜生成与字幕配音合成"
+  icon_small: "./assets/logo.svg"
+  default_prompt: "使用 $h3-studio-colab 把源视频中的角色替换成参考图形象，先生成关键帧对比图确认。"
+
+policy:
+  allow_implicit_invocation: true

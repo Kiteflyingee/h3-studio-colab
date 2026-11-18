@@ -41,45 +41,64 @@ uv tool install google-colab-cli
 colab auth login
 ```
 
-### 方式一：安装为 AI Agent Skill
+### 方式一：安装为插件或 AI Agent Skill
 
-支持 **Claude Code**、**Codex**、**Antigravity** 等支持 `SKILL.md` 规范的客户端，按你平时使用的工具克隆到对应目录并装好 Python 依赖即可：
+仓库采用**插件市场（Plugin）与独立技能（Skill）双兼容目录结构**，内置了 Claude Code（[`.claude-plugin/`](.claude-plugin)）、Codex（[`.codex-plugin/`](.codex-plugin) 与 [`agents/openai.yaml`](agents/openai.yaml)）以及 Antigravity（[`plugin.json`](plugin.json)）的描述文件，既可以用各客户端自带的插件命令直接添加，也可以克隆到 `skills/` 目录使用：
 
-| 工具 | 全局技能目录（所有项目通用） | 项目级技能目录（仅当前工程生效） | 对话调用方式 |
+| 客户端 | 插件安装路径 / 命令 | 单 Skill 目录路径 | 对话调用方式 |
 | :--- | :--- | :--- | :--- |
-| **Claude Code** | `~/.claude/skills/h3-studio-colab` | `.claude/skills/h3-studio-colab` | `/h3-studio-colab` 或自然语言 |
-| **Codex** | `~/.codex/skills/h3-studio-colab` | `.agents/skills/h3-studio-colab` | `$h3-studio-colab` 或自然语言 |
-| **Antigravity** | `~/.gemini/config/skills/h3-studio-colab` | `.agents/skills/h3-studio-colab` | `/h3-studio-colab` 或自然语言 |
+| **Claude Code** | `/plugin marketplace add Kiteflyingee/h3-studio-colab` | `~/.claude/skills/h3-studio-colab`（项目级 `.claude/skills/`） | `/h3-studio-colab` 或自然语言 |
+| **Codex** | `$skill-installer install https://github.com/Kiteflyingee/h3-studio-colab` | `~/.codex/skills/h3-studio-colab`（项目级 `.agents/skills/`） | `$h3-studio-colab` 或自然语言 |
+| **Antigravity** | `~/.gemini/config/plugins/h3-studio-colab` | `~/.gemini/config/skills/h3-studio-colab`（工作区 `.agents/skills/`） | `/h3-studio-colab` 或自然语言 |
 
 **Claude Code 安装**
 
+直接在 Claude Code 对话框中通过插件市场添加并安装（首次使用前记得在插件目录或本机 Python 环境中执行一次 `pip install Pillow huggingface_hub`）：
+
+```text
+/plugin marketplace add Kiteflyingee/h3-studio-colab
+/plugin install h3-studio-colab@h3-studio-colab
+```
+
+或手动克隆到技能目录：
+
 ```bash
-# 全局安装（若只需当前项目生效，把路径换成 .claude/skills/h3-studio-colab）
 git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.claude/skills/h3-studio-colab
 pip install -r ~/.claude/skills/h3-studio-colab/requirements.txt
 ```
 
 **Codex 安装**
 
+在 Codex 对话中直接调用内置技能安装器：
+
+```text
+$skill-installer install https://github.com/Kiteflyingee/h3-studio-colab
+```
+
+或手动克隆到 `~/.codex/skills/`（单仓库安装可改为 `.agents/skills/h3-studio-colab`）：
+
 ```bash
-# 全局安装（若只需当前仓库生效，把路径换成 .agents/skills/h3-studio-colab）
 git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.codex/skills/h3-studio-colab
 pip install -r ~/.codex/skills/h3-studio-colab/requirements.txt
 ```
 
 **Antigravity 安装**
 
-```bash
-# 全局安装（本机所有工作区可用）
-git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.gemini/config/skills/h3-studio-colab
-pip install -r ~/.gemini/config/skills/h3-studio-colab/requirements.txt
+可作为完整 Plugin 安装到全局插件目录（在插件面板中带图标、推荐提问卡片并支持一键启停）：
 
-# 或仅安装到当前工作区
+```bash
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.gemini/config/plugins/h3-studio-colab
+pip install -r ~/.gemini/config/plugins/h3-studio-colab/requirements.txt
+```
+
+也可以仅作为单工作区 Skill 放入当前项目：
+
+```bash
 git clone https://github.com/Kiteflyingee/h3-studio-colab.git .agents/skills/h3-studio-colab
 pip install -r .agents/skills/h3-studio-colab/requirements.txt
 ```
 
-**通过 `skills` CLI 安装（通用）**
+**通用 `skills` CLI 安装**
 
 ```bash
 npx skills add Kiteflyingee/h3-studio-colab
@@ -236,7 +255,12 @@ python scripts/h3studio.py stop --all                      # 不用时立刻关�
 
 ```text
 h3-studio-colab/
-├── SKILL.md                  # Agent 技能入口说明
+├── plugin.json               # Antigravity 插件描述清单
+├── .claude-plugin/           # Claude Code 插件与 marketplace.json 市场源配置
+├── .codex-plugin/            # Codex 插件配置
+├── agents/openai.yaml        # Codex / OpenAI 技能卡片配置
+├── SKILL.md                  # 根目录单 Skill 入口说明
+├── skills/h3-studio-colab/   # Plugin 模式技能包与脚本转发入口
 ├── scripts/
 │   ├── h3studio.py           # 命令行主入口
 │   └── verify_release.py     # 离线测试与构图校验脚本

@@ -1,0 +1,22 @@
+{
+  "name": "h3-studio-colab",
+  "version": "4.0.0",
+  "description": "通过 Google Colab CLI 调用云端 GPU 完成视频换人/换物改版（先出关键帧对比图确认、再渲染全片）、原创多镜头分镜生成与免 GPU 字幕配音合成。",
+  "author": {
+    "name": "Kiteflyingee",
+    "url": "https://github.com/Kiteflyingee"
+  },
+  "homepage": "https://github.com/Kiteflyingee/h3-studio-colab",
+  "repository": "https://github.com/Kiteflyingee/h3-studio-colab",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "H3 Studio Colab",
+    "shortDescription": "Colab 云端视频改版与多镜头短片生成",
+    "longDescription": "通过 Google Colab CLI 调用云端 GPU 完成视频换人/换物改版（先出关键帧对比图确认、再渲染全片）、原创多镜头分镜生成、单件图/视频/配音生成与免 GPU 字幕配音合成。",
+    "developerName": "Kiteflyingee",
+    "category": "Creative",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": "使用 $h3-studio-colab 把视频里的角色替换为参考图形象，先生成关键帧对比图确认。"
+  }
+}

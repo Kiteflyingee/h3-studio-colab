@@ -105,7 +105,7 @@ def director_render(args):
 
 
 def main():
-    ap = argparse.ArgumentParser(description='H3 Studio Colab | MiniMax H3 + WepeNerd H3 Ripple 统一命令行')
+    ap = argparse.ArgumentParser(description='H3 Studio Colab 统一命令行')
     sub = ap.add_subparsers(dest='command', required=True)
 
     sub.add_parser('check', help='检查 Colab CLI 登录、剩余运算单元与活跃会话').set_defaults(fn=check_cmd)

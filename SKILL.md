@@ -1,9 +1,9 @@
 ---
 name: h3-studio-colab
-description: 使用 Google Colab CLI 运行纯血 MiniMax H3 与 WepeNerd H3 Ripple 多模态工作流。提供四条标准创作流水线：爆款视频两步确认式复刻（先出关键帧对比图确认形象、再 6 步扩散成片）、AI 原创多镜头导演、单件素材生成（图/视频/配音）与免 GPU 音字后期合成。
+description: 通过 Google Colab CLI 调用云端 GPU 完成视频换人/换物改版（先出关键帧对比图确认、再渲染全片）、原创多镜头分镜生成、单件图/视频/配音生成与免 GPU 字幕配音合成。
 ---
 
-# H3 Studio Colab · 纯血 MiniMax H3 + WepeNerd Ripple 工作流
+# H3 Studio Colab
 
 先读取 `README.md` 与 `acceptance/功能验收.json`。所有操作统一使用单一入口 `python scripts/h3studio.py <子命令>`。
 

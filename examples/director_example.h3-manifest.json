@@ -1,0 +1,38 @@
+{
+  "gpu": "L4",
+  "jobs": [
+    {
+      "id": "shot01",
+      "type": "video",
+      "mode": "text",
+      "prompt": "A cinematic wide establishing shot of a spring flower meadow under soft morning sunlight. Two original animated cats appear far apart among white daisies. A calm breeze stirs the flowers and the soft grass while the camera slowly moves forward at eye level. No subtitles, no letters, no logos. Gentle birdsong and soft outdoor ambience.",
+      "seconds": 5,
+      "aspect": "9:16",
+      "resolution": "480P",
+      "intensity": "off",
+      "fast": true
+    },
+    {
+      "id": "shot02",
+      "type": "video",
+      "mode": "text",
+      "prompt": "In the same peaceful meadow, a black and white animated cat gently walks along a narrow path between flowers. A fluffy brown cat approaches from the other side, keeping a natural walking pace. The camera tracks them smoothly from a medium distance. The meadow, morning light, and colors match the previous shot. Gentle wind and paws on grass, no on-screen text.",
+      "seconds": 5,
+      "aspect": "9:16",
+      "resolution": "480P",
+      "intensity": "off",
+      "fast": true
+    },
+    {
+      "id": "shot03",
+      "type": "video",
+      "mode": "text",
+      "prompt": "A warm close shot of the two animated cats sitting side by side in a meadow of bright daisies. The camera makes a restrained slow arc, keeping the cats centered. Their expressions remain natural, with subtle ear motion and a calm peaceful atmosphere. A few petals move in the wind. Soft outdoor ambience without dialogue. No subtitles and no text.",
+      "seconds": 5,
+      "aspect": "9:16",
+      "resolution": "480P",
+      "intensity": "off",
+      "fast": true
+    }
+  ]
+}

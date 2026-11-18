@@ -1,0 +1,17 @@
+{
+  "jobs": [
+    {
+      "id": "shot01_ripple",
+      "type": "video_edit",
+      "profile": "h3-ripple",
+      "source_video": "assets/shot01.mp4",
+      "seconds": 5.0,
+      "resolution": "720P",
+      "comparison": true,
+      "anchors": [
+        {"frame": 0, "image": "assets/shot01_f000_edited.png"},
+        {"frame": 119, "image": "assets/shot01_f119_edited.png"}
+      ]
+    }
+  ]
+}

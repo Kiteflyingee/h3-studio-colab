@@ -1,0 +1,14 @@
+{
+  "title": "单镜头环境检查",
+  "gpu": "L4",
+  "aspect": "9:16",
+  "resolution": "480P",
+  "shots": [{
+    "id":"test01",
+    "title":"草地晨光",
+    "seconds":5,
+    "mode":"text",
+    "transition":"cut",
+    "prompt":"A calm cinematic shot of dew on green grass in the morning, with gentle sunlight and a slow forward camera move, fine natural detail, soft outdoor ambience and no on-screen text."
+  }]
+}

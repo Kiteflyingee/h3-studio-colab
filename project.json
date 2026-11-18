@@ -1,0 +1,8 @@
+{
+  "name": "h3-studio-colab",
+  "version": "4.0.0",
+  "language": "zh-CN",
+  "python": ">=3.10",
+  "gpu_verified": false,
+  "release_date": "2026-11-18"
+}

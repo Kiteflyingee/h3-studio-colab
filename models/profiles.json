@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "h3-fl2va-int8": {
+      "id": "h3-fl2va-int8",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "diffusion_models__minimax_h3_fl2va_pruned_int8_convrot",
+        "loras__minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "fl2va",
+      "sampling": {
+        "normal_steps": 20,
+        "fast_steps": 8,
+        "sampler": "res_multistep",
+        "scheduler": "simple"
+      }
+    },
+    "h3-ref2va-int8": {
+      "id": "h3-ref2va-int8",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "diffusion_models__minimax_h3_ref2va_pruned_int8_convrot",
+        "loras__minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ref2va",
+      "sampling": {
+        "normal_steps": 20,
+        "fast_steps": 4,
+        "sampler": "res_multistep",
+        "scheduler": "simple"
+      }
+    },
+    "ph3-lora-int8": {
+      "id": "ph3-lora-int8",
+      "components": [
+        "diffusion_models__minimax_h3_fl2va_pruned_int8_convrot",
+        "text_encoders__p-h3-image_text_encoder_int8_convrot",
+        "vae__p-h3-image_vae_int8_convrot",
+        "loras__p-h3-image_lora_bf16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ph3",
+      "upsampler_components": [
+        "text_encoders__p-h3-image_prompt_upsampler_bf16"
+      ]
+    },
+    "ph3-standalone-w4a8": {
+      "id": "ph3-standalone-w4a8",
+      "components": [
+        "diffusion_models__p-h3-image_w4a8",
+        "text_encoders__p-h3-image_text_encoder_w4a8",
+        "vae__p-h3-image_vae_int8_convrot"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ph3",
+      "upsampler_components": [
+        "text_encoders__p-h3-image_prompt_upsampler_bf16"
+      ]
+    },
+    "h3-guides": {
+      "id": "h3-guides",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "diffusion_models__minimax_h3_ref2va_pruned_int8_convrot",
+        "loras__minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ref2va",
+      "sampling": {
+        "normal_steps": 20,
+        "fast_steps": 4,
+        "sampler": "res_multistep",
+        "scheduler": "simple"
+      }
+    },
+    "h3-control-union": {
+      "id": "h3-control-union",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "diffusion_models__minimax_h3_ref2va_pruned_int8_convrot",
+        "loras__minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16",
+        "model_patches__minimax_h3_fun_controlnet_union_2.0_pruned_int8_convrot"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ref2va",
+      "sampling": {
+        "normal_steps": 20,
+        "fast_steps": 4,
+        "sampler": "res_multistep",
+        "scheduler": "simple"
+      }
+    },
+    "prism-dmad-pdmd-int8": {
+      "id": "prism-dmad-pdmd-int8",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "PRISM_DMAD_PDMD_int8"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "ref2va",
+      "sampling": {
+        "normal_steps": 8,
+        "fast_steps": 8,
+        "sampler": "euler",
+        "scheduler": "beta57",
+        "shift_video": 12,
+        "shift_audio": 3
+      }
+    },
+    "fasth3": {
+      "id": "fasth3",
+      "family": "ref2va",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "FastVideo__FastH3-Omni-Comfy__fasth3_omniref_8step_pruned_int8_convrot"
+      ],
+      "sampling": {
+        "fast_steps": 8,
+        "normal_steps": 8,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "shift_video": 12.0,
+        "shift_audio": 3.0
+      },
+      "code_ready": true,
+      "gpu_verified": false
+    },
+    "media-only": {
+      "id": "media-only",
+      "components": [],
+      "code_ready": true,
+      "gpu_verified": false,
+      "family": "media"
+    },
+    "fasth3-omni-int8": {
+      "id": "fasth3-omni-int8",
+      "family": "ref2va",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "FastVideo__FastH3-Omni-Comfy__fasth3_omniref_8step_pruned_int8_convrot"
+      ],
+      "sampling": {
+        "fast_steps": 8,
+        "normal_steps": 8,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "shift_video": 12.0,
+        "shift_audio": 3.0
+      },
+      "code_ready": true,
+      "gpu_verified": false
+    },
+    "h3-tts32-native": {
+      "id": "h3-tts32-native",
+      "family": "tts32",
+      "components": [
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_int8_convrot",
+        "vae__minimax_h3_audio_vae_fp32",
+        "diffusion_models__minimax_h3_ref2va_pruned_int8_convrot",
+        "loras__pika_h3_flex_ref2va_v1_bf16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false
+    },
+    "h3-ripple": {
+      "id": "h3-ripple",
+      "family": "h3-ripple",
+      "components": [
+        "diffusion_models__minimax_h3_fl2va_pruned_int8_convrot",
+        "loras__pika_h3_flex_fl2va_v1_bf16",
+        "WepeNerd__H3_Ripple__minimax_H3_Ripple-v1",
+        "text_encoders__qwen3vl_32b_minimax_h3_int8_convrot",
+        "vae__minimax_h3_video_vae_fp16"
+      ],
+      "code_ready": true,
+      "gpu_verified": false,
+      "requires_registered_template": false,
+      "sampling": {
+        "normal_steps": 6,
+        "fast_steps": 6,
+        "sampler": "lcm",
+        "scheduler": "simple"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "comfyui": {
+    "repo": "Comfy-Org/ComfyUI",
+    "commit": "ee34406f56f84f6bc89996b8b77a4bedec98a2b9"
+  },
+  "workflow_templates": {
+    "repo": "Comfy-Org/workflow_templates",
+    "commit": "37da976016cf4a83105e66280f916d13fabc25ac"
+  },
+  "gpu_verified": false,
+  "custom_nodes": {
+    "wepenerd": {
+      "url": "https://github.com/WepeNerd/ComfyUI-WepeNerd.git",
+      "commit": "a333adf90a764eb0852a34fd31c5b13e68346860"
+    }
+  }
+}

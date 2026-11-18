@@ -1,0 +1,16 @@
+{
+  "gpu": "L4",
+  "jobs": [
+    {
+      "id": "test01",
+      "type": "video",
+      "mode": "text",
+      "prompt": "A calm cinematic shot of dew on green grass in the morning, with gentle sunlight and a slow forward camera move, fine natural detail, soft outdoor ambience and no on-screen text.",
+      "seconds": 5,
+      "aspect": "9:16",
+      "resolution": "480P",
+      "intensity": "off",
+      "fast": true
+    }
+  ]
+}

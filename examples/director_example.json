@@ -1,0 +1,23 @@
+{
+  "title": "花海里的猫咪短片",
+  "gpu": "L4",
+  "aspect": "9:16",
+  "resolution": "480P",
+  "shots": [
+    {
+      "id": "shot01", "title": "建立环境", "seconds": 5, "mode": "text", "transition": "cut",
+      "camera": "wide static to slow dolly",
+      "prompt": "A cinematic wide establishing shot of a spring flower meadow under soft morning sunlight. Two original animated cats appear far apart among white daisies. A calm breeze stirs the flowers and the soft grass while the camera slowly moves forward at eye level. No subtitles, no letters, no logos. Gentle birdsong and soft outdoor ambience."
+    },
+    {
+      "id": "shot02", "title": "猫咪靠近", "seconds": 5, "mode": "text", "transition": "fade_black",
+      "camera": "medium tracking",
+      "prompt": "In the same peaceful meadow, a black and white animated cat gently walks along a narrow path between flowers. A fluffy brown cat approaches from the other side, keeping a natural walking pace. The camera tracks them smoothly from a medium distance. The meadow, morning light, and colors match the previous shot. Gentle wind and paws on grass, no on-screen text."
+    },
+    {
+      "id": "shot03", "title": "温暖结尾", "seconds": 5, "mode": "text", "transition": "cut",
+      "camera": "close shot",
+      "prompt": "A warm close shot of the two animated cats sitting side by side in a meadow of bright daisies. The camera makes a restrained slow arc, keeping the cats centered. Their expressions remain natural, with subtle ear motion and a calm peaceful atmosphere. A few petals move in the wind. Soft outdoor ambience without dialogue. No subtitles and no text."
+    }
+  ]
+}

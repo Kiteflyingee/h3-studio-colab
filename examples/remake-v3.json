@@ -1,0 +1,31 @@
+{
+  "source_video": "assets/source.mp4",
+  "mode": "edit",
+  "resolution": "480P",
+  "characters": [
+    {
+      "target_id": "the woman on the left wearing a red coat",
+      "reference": "assets/character.png",
+      "prompt": "Keep natural pose and expression."
+    }
+  ],
+  "products": [
+    {
+      "target_id": "the bottle in her right hand",
+      "reference": "assets/product.png",
+      "prompt": "Preserve the product shape and original hand grip."
+    }
+  ],
+  "preserve": ["camera", "background", "timing", "audio"],
+  "copy": {
+    "subtitles": [{"start": 0, "end": 4, "text": "替换后的准确字幕"}],
+    "in_scene_text": [{"start": 0, "end": 4, "text": "NEW PRODUCT", "x": 20, "y": 50, "font_size": 32}],
+    "clear_regions": [],
+    "dialogue": []
+  },
+  "analysis": {},
+  "variants": [
+    {"name": "version_a"},
+    {"name": "version_b", "copy": {"subtitles": [{"start": 0, "end": 4, "text": "第二版文案"}]}}
+  ]
+}

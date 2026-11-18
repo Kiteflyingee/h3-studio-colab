@@ -1,0 +1,6 @@
+{
+  "schema_version": 2,
+  "jobs": [
+    {"id":"lake","type":"video","mode":"text","prompt":"A slow tracking shot along a quiet mountain lake at dawn. Natural water sounds.","seconds":5,"resolution":"480P","aspect":"9:16","seed":42}
+  ]
+}

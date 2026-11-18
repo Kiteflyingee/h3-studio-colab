@@ -1,0 +1,234 @@
+{
+  "unet": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "lora_pika": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "unet",
+        0
+      ],
+      "lora_name": "pika_h3_flex_fl2va_v1_bf16.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "lora_ripple": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "lora_pika",
+        0
+      ],
+      "lora_name": "minimax_H3_Ripple-v1.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "clip": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "source": {
+    "class_type": "LoadVideo",
+    "inputs": {
+      "file": "source.mp4"
+    }
+  },
+  "source_parts": {
+    "class_type": "GetVideoComponents",
+    "inputs": {
+      "video": [
+        "source",
+        0
+      ]
+    }
+  },
+  "src_last": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "source_parts",
+        0
+      ],
+      "batch_index": 95,
+      "length": 1
+    }
+  },
+  "src_repeat": {
+    "class_type": "RepeatImageBatch",
+    "inputs": {
+      "image": [
+        "src_last",
+        0
+      ],
+      "amount": 11
+    }
+  },
+  "src_padded": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "source_parts",
+        0
+      ],
+      "image2": [
+        "src_repeat",
+        0
+      ]
+    }
+  },
+  "ripple_clip": {
+    "class_type": "WN_RippleFromFrames",
+    "inputs": {
+      "images": [
+        "src_padded",
+        0
+      ],
+      "frame_rate": 24.0,
+      "duration": 4.458333,
+      "megapixels": 0.25,
+      "window_start": 0,
+      "markers": "[{\"id\":1,\"frame\":0}]",
+      "crop": "",
+      "allow_upscale": false,
+      "resize_method": "lanczos",
+      "audio": [
+        "source_parts",
+        1
+      ]
+    }
+  },
+  "anchor_load_1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "reference.png"
+    }
+  },
+  "cond": {
+    "class_type": "WN_RippleApply",
+    "inputs": {
+      "clip": [
+        "clip",
+        0
+      ],
+      "vae": [
+        "vae",
+        0
+      ],
+      "ripple": [
+        "ripple_clip",
+        1
+      ],
+      "prompt": "Edit propagation: each edited frame shows exactly how that moment of the video should look after the edit. Apply the same changes to every frame of the clip, before, between and after the edited frames, so the edit stays consistent through the whole video. Keep the guide video's motion, timing, camera movement, composition and all unedited content unchanged.",
+      "edited_anchor_1": [
+        "anchor_load_1",
+        0
+      ]
+    }
+  },
+  "noise": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 42
+    }
+  },
+  "sampler": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "lcm"
+    }
+  },
+  "schedule": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "lora_ripple",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": 6,
+      "denoise": 1.0
+    }
+  },
+  "guider": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "lora_ripple",
+        0
+      ],
+      "conditioning": [
+        "cond",
+        0
+      ]
+    }
+  },
+  "sample": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "noise",
+        0
+      ],
+      "guider": [
+        "guider",
+        0
+      ],
+      "sampler": [
+        "sampler",
+        0
+      ],
+      "sigmas": [
+        "schedule",
+        0
+      ],
+      "latent_image": [
+        "cond",
+        1
+      ]
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "sample",
+        0
+      ],
+      "vae": [
+        "vae",
+        0
+      ]
+    }
+  },
+  "save": {
+    "class_type": "WN_RippleOutput",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "ripple": [
+        "ripple_clip",
+        1
+      ],
+      "save": "shot",
+      "filename_prefix": "h3studio/preview",
+      "show_anchor_markers": false
+    }
+  }
+}

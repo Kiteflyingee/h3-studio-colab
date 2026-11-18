@@ -1,0 +1,9 @@
+{
+  "schema_version":2,
+  "jobs":[
+    {"id":"picture","type":"image","prompt":"A realistic product photograph on a plain table.","aspect":"1:1","seed":42},
+    {"id":"animate","type":"video","mode":"frames","first":"@picture","prompt":"Slow camera orbit around the product.","seconds":5,"resolution":"480P","aspect":"1:1","seed":42},
+    {"id":"voice","type":"tts","prompt":"An adult woman speaks clearly and naturally. Say exactly: \"Welcome to our store.\"","seconds":5,"seed":42},
+    {"id":"final","type":"voice_replace","source_video":"@animate","voice":"@voice","options":{"start":0,"end":5,"replace":true}}
+  ]
+}

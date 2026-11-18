@@ -1,0 +1,64 @@
+{
+  "python": "3.14.2",
+  "ffmpeg_available": true,
+  "gpu_test_executed": false,
+  "checks": {
+    "unit-tests": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "unit-tests.txt",
+      "test_count": 88
+    },
+    "export-graphs": {
+      "command": [
+        "python",
+        "scripts/export_examples.py"
+      ],
+      "exit_code": 0,
+      "log": "export-graphs.txt"
+    },
+    "compile": {
+      "command": [
+        "python",
+        "-m",
+        "compileall",
+        "-q",
+        "studio",
+        "scripts",
+        "remote"
+      ],
+      "exit_code": 0,
+      "log": "compile.txt"
+    },
+    "offline-plan": {
+      "command": [
+        "python",
+        "scripts/h3studio.py",
+        "plan",
+        "examples/advanced-v3.json"
+      ],
+      "exit_code": 0,
+      "log": "offline-plan.txt"
+    },
+    "offline-doctor": {
+      "command": [
+        "python",
+        "scripts/h3studio.py",
+        "doctor",
+        "--manifest",
+        "examples/basic-v3.json",
+        "--offline"
+      ],
+      "exit_code": 0,
+      "log": "offline-doctor.txt"
+    }
+  }
+}

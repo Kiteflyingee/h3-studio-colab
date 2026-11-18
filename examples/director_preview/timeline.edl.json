@@ -1,0 +1,35 @@
+{
+  "total_seconds": 15.0,
+  "shots": [
+    {
+      "id": "shot01",
+      "title": "建立环境",
+      "start": 0.0,
+      "end": 5.0,
+      "duration": 5.0,
+      "transition": "cut",
+      "mode": "text",
+      "camera": "wide static to slow dolly"
+    },
+    {
+      "id": "shot02",
+      "title": "猫咪靠近",
+      "start": 5.0,
+      "end": 10.0,
+      "duration": 5.0,
+      "transition": "fade_black",
+      "mode": "text",
+      "camera": "medium tracking"
+    },
+    {
+      "id": "shot03",
+      "title": "温暖结尾",
+      "start": 10.0,
+      "end": 15.0,
+      "duration": 5.0,
+      "transition": "cut",
+      "mode": "text",
+      "camera": "close shot"
+    }
+  ]
+}

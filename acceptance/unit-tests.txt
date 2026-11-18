@@ -1,0 +1,149 @@
+colab： /usr/local/bin/colab
+运算单元： 100.0
+[colab] No active sessions.
+{
+  "jobs": {
+    "a": {
+      "status": "done",
+      "artifacts": []
+    }
+  },
+  "session": "existing",
+  "run_id": "owned"
+}
+远端会话保留：existing；使用原清单 --resume 恢复，连接记录：<TEMP_DIR>
+{
+  "jobs": {
+    "a": {
+      "status": "collecting",
+      "artifacts": []
+    }
+  },
+  "session": "existing",
+  "run_id": "owned"
+}
+远端会话保留：existing；使用原清单 --resume 恢复，连接记录：<TEMP_DIR>
+test_fast_omni_uses_own_checkpoint_without_turbo_lora (test_acceleration_profiles.AccelerationTests.test_fast_omni_uses_own_checkpoint_without_turbo_lora) ... ok
+test_new_voice_does_not_shorten_video (test_audio_mix.AudioMixTests.test_new_voice_does_not_shorten_video) ... ok
+test_payload_rewrites_file_paths_without_exposing_credentials (test_backend_contract.BackendContractTests.test_payload_rewrites_file_paths_without_exposing_credentials) ... ok
+test_offline_plan_and_doctor_do_not_contact_server (test_cli_examples.CLITests.test_offline_plan_and_doctor_do_not_contact_server) ... ok
+test_subtitle_only_remake_runs_without_comfyui (test_cli_examples.CLITests.test_subtitle_only_remake_runs_without_comfyui) ... ok
+test_actual_remote_worker_renders_two_copy_variants_and_downloads_them (test_colab_remake_transport.ColabRemakeTransportTests.test_actual_remote_worker_renders_two_copy_variants_and_downloads_them) ... ♻️ 复用 Colab 会话：existing
+⬆️ 上传 1 个输入素材…
+[ 0.0 分] starting
+[ 0.0 分] generating
+[ 0.0 分] finished · version_a__remake_001:done version_a__remake_001_subtitles:done version_b__remake_001:done version_b__remake_001_subtitles:done delivery:done
+[ 0.0 分] finished · version_a__remake_001:done version_a__remake_001_subtitles:done version_b__remake_001:done version_b__remake_001_subtitles:done delivery:done
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+⬇️ <TEMP_DIR>
+ok
+test_actual_worker_composes_director_shots_before_downloading (test_colab_remake_transport.ColabRemakeTransportTests.test_actual_worker_composes_director_shots_before_downloading) ... 🚀 启动 Colab CPU：h3skill-v3-23d452f92589
+⬆️ 上传 2 个输入素材…
+[ 0.0 分] generating
+[ 0.0 分] generating · a:done
+⬇️ <TEMP_DIR>
+[ 0.0 分] composing · a:done b:done
+⬇️ <TEMP_DIR>
+[ 0.0 分] finished · a:done b:done director-delivery:done
+⬇️ <TEMP_DIR>
+ok
+test_download_paths_preserve_variants_and_reject_foreign_paths (test_colab_skill_routes.SkillRouteTests.test_download_paths_preserve_variants_and_reject_foreign_paths) ... ok
+test_remake_anchors_and_render_accept_colab_lifecycle_options (test_colab_skill_routes.SkillRouteTests.test_remake_anchors_and_render_accept_colab_lifecycle_options) ... ok
+test_request_payload_covers_variant_assets_and_does_not_rewrite_prompt (test_colab_skill_routes.SkillRouteTests.test_request_payload_covers_variant_assets_and_does_not_rewrite_prompt) ... ok
+test_run_defaults_to_colab_with_automatic_runtime_preparation (test_colab_skill_routes.SkillRouteTests.test_run_defaults_to_colab_with_automatic_runtime_preparation) ... ok
+test_unified_cli_exposes_session_management_without_legacy_h3run (test_colab_skill_routes.SkillRouteTests.test_unified_cli_exposes_session_management_without_legacy_h3run) ... ok
+test_audio_and_video_outputs_download_without_duplicate (test_comfy_client.ComfyClientTests.test_audio_and_video_outputs_download_without_duplicate) ... ok
+test_three_longer_sources_are_trimmed_to_requested_duration (test_composition.CompositionTests.test_three_longer_sources_are_trimmed_to_requested_duration) ... ok
+test_subtitle_text_and_timing_survive_render (test_copy_replace.CopyTests.test_subtitle_text_and_timing_survive_render) ... ok
+test_font_participates_in_payload_and_cache (test_delivery_edges.DeliveryEdges.test_font_participates_in_payload_and_cache) ... ok
+test_restore_source_audio_and_exact_overlay_are_real_media (test_delivery_edges.DeliveryEdges.test_restore_source_audio_and_exact_overlay_are_real_media) ... ok
+test_scene_text_compiles_into_exact_overlay (test_delivery_edges.DeliveryEdges.test_scene_text_compiles_into_exact_overlay) ... ok
+test_short_dialogue_fails_before_gpu_allocation (test_delivery_edges.DeliveryEdges.test_short_dialogue_fails_before_gpu_allocation) ... ok
+test_continue_previous_compiles_incremental_segment (test_director_continuity.DirectorContinuityTests.test_continue_previous_compiles_incremental_segment) ... ok
+test_failure_blocks_only_dependents (test_executor.ExecutorTests.test_failure_blocks_only_dependents) ... ok
+test_resume_uses_fingerprint_not_filename (test_executor.ExecutorTests.test_resume_uses_fingerprint_not_filename) ... ok
+test_resume_waits_known_prompt_without_resubmit (test_executor.ExecutorTests.test_resume_waits_known_prompt_without_resubmit) ... ok
+test_segment_and_cumulative_do_not_repeat_source (test_extension.ExtensionTests.test_segment_and_cumulative_do_not_repeat_source) ... ok
+test_control_video_connects_actual_union_patch (test_h3_control.ControlTests.test_control_video_connects_actual_union_patch) ... ok
+test_time_guides_are_wired_and_out_of_range_is_rejected (test_h3_guides.GuideTests.test_time_guides_are_wired_and_out_of_range_is_rejected) ... ok
+test_reference_inputs_reach_conditioning (test_h3_profiles.H3ProfileTests.test_reference_inputs_reach_conditioning) ... ok
+test_text_and_frames_use_fl2va_without_style_loras (test_h3_profiles.H3ProfileTests.test_text_and_frames_use_fl2va_without_style_loras) ... ok
+test_a100_and_h100_defaults_in_run_colab (test_macos_and_a100_fixes.MacOSAndA100FixTests.test_a100_and_h100_defaults_in_run_colab) ... ok
+test_artifact_target_handles_symlinked_remote_dir_and_blocks_traversal (test_macos_and_a100_fixes.MacOSAndA100FixTests.test_artifact_target_handles_symlinked_remote_dir_and_blocks_traversal) ... ok
+test_ffmpeg_error_preserves_called_process_error_and_exposes_stderr (test_macos_and_a100_fixes.MacOSAndA100FixTests.test_ffmpeg_error_preserves_called_process_error_and_exposes_stderr) ... ok
+test_video_vae_override_switches_graph_and_required_components (test_macos_and_a100_fixes.MacOSAndA100FixTests.test_video_vae_override_switches_graph_and_required_components) ... ok
+test_contract_is_available (test_manifest.ManifestTests.test_contract_is_available) ... ok
+test_dependency_order_and_unknown_fields (test_manifest.ManifestTests.test_dependency_order_and_unknown_fields) ... ok
+test_future_reference_and_missing_file (test_manifest.ManifestTests.test_future_reference_and_missing_file) ... ok
+test_invalid_seconds_duplicate_and_self_reference (test_manifest.ManifestTests.test_invalid_seconds_duplicate_and_self_reference) ... ok
+test_legacy_examples_and_paths (test_manifest.ManifestTests.test_legacy_examples_and_paths) ... ok
+test_reference_limits_and_nonprompt_tasks (test_manifest.ManifestTests.test_reference_limits_and_nonprompt_tasks) ... ok
+test_audio_metadata_is_actual (test_media.MediaTests.test_audio_metadata_is_actual) ... ok
+test_staging_uses_bytes_not_path_or_size (test_media.MediaTests.test_staging_uses_bytes_not_path_or_size) ... ok
+test_picture_reuses_fl2va_and_downloads_are_deduplicated (test_model_registry.ModelRegistryTests.test_picture_reuses_fl2va_and_downloads_are_deduplicated) ... ok
+test_profiles_route_by_task (test_model_registry.ModelRegistryTests.test_profiles_route_by_task) ... ok
+test_lora_uses_fl2va_and_target_is_not_reordered (test_picture_profiles.PictureTests.test_lora_uses_fl2va_and_target_is_not_reordered) ... ok
+test_standalone_has_no_lora (test_picture_profiles.PictureTests.test_standalone_has_no_lora) ... ok
+test_missing_bridge_is_reported (test_preflight.PreflightTests.test_missing_bridge_is_reported) ... ok
+test_missing_picture_lora_is_reported (test_preflight.PreflightTests.test_missing_picture_lora_is_reported) ... ok
+test_required_parameter_and_unknown_node (test_preflight.PreflightTests.test_required_parameter_and_unknown_node) ... ok
+test_subfolder_is_not_ignored (test_preflight.PreflightTests.test_subfolder_is_not_ignored) ... ok
+test_only_with_dependents_does_not_invalidate_sibling (test_recovery_edges.RecoveryEdgeTests.test_only_with_dependents_does_not_invalidate_sibling) ... ok
+test_pending_task_cannot_be_replaced_after_prompt_change (test_recovery_edges.RecoveryEdgeTests.test_pending_task_cannot_be_replaced_after_prompt_change) ... ok
+test_uncertain_submission_stays_uncertain_across_retries (test_recovery_edges.RecoveryEdgeTests.test_uncertain_submission_stays_uncertain_across_retries) ... ok
+test_h3_reference_is_resampled_without_shortening (test_reference_rate.ReferenceRateTests.test_h3_reference_is_resampled_without_shortening) ... ok
+test_long_source_is_split_without_truncation (test_remake_plan.RemakeTests.test_long_source_is_split_without_truncation) ... ok
+test_product_edit_does_not_request_person_or_dialogue_changes (test_remake_plan.RemakeTests.test_product_edit_does_not_request_person_or_dialogue_changes) ... ok
+test_source_analysis_reports_missing_semantic_tools (test_remake_plan.RemakeTests.test_source_analysis_reports_missing_semantic_tools) ... ok
+test_nested_guide_media_is_described_without_upload (test_review_doctor.DoctorReviewTests.test_nested_guide_media_is_described_without_upload) ... ok
+test_ripple_readiness_checks_actual_node (test_review_doctor.DoctorReviewTests.test_ripple_readiness_checks_actual_node) ... ok
+test_failed_prerequisite_does_not_erase_pending_child (test_review_pending.PendingReviewTests.test_failed_prerequisite_does_not_erase_pending_child) ... ok
+test_fast_profiles_use_locked_upstream_euler (test_review_regressions.ReviewGraphTests.test_fast_profiles_use_locked_upstream_euler) ... ok
+test_incompatible_profiles_are_rejected (test_review_regressions.ReviewGraphTests.test_incompatible_profiles_are_rejected) ... ok
+test_picture_align_to_first_wires_qwen_edit_align_composite (test_review_regressions.ReviewGraphTests.test_picture_align_to_first_wires_qwen_edit_align_composite) ... ok
+test_portrait_source_resolves_auto_geometry (test_review_regressions.ReviewGraphTests.test_portrait_source_resolves_auto_geometry) ... ok
+test_cumulative_extension_keeps_source_rate_and_canvas (test_review_regressions.ReviewMediaTests.test_cumulative_extension_keeps_source_rate_and_canvas) ... ok
+test_mixed_outputs_all_enter_result_record (test_review_regressions.ReviewMediaTests.test_mixed_outputs_all_enter_result_record) ... ok
+test_primary_image_comes_from_final_save_node (test_review_regressions.ReviewMediaTests.test_primary_image_comes_from_final_save_node) ... ok
+test_webm_output_is_delivered_in_valid_container (test_review_regressions.ReviewMediaTests.test_webm_output_is_delivered_in_valid_container) ... ok
+test_concurrent_report_writer_is_rejected (test_review_regressions.ReviewRecoveryTests.test_concurrent_report_writer_is_rejected) ... ok
+test_dependency_only_child_invalidates (test_review_regressions.ReviewRecoveryTests.test_dependency_only_child_invalidates) ... ok
+test_download_failure_resumes_collection_by_prompt (test_review_regressions.ReviewRecoveryTests.test_download_failure_resumes_collection_by_prompt) ... ok
+test_history_disconnect_never_resubmits (test_review_regressions.ReviewRecoveryTests.test_history_disconnect_never_resubmits) ... ok
+test_direct_video_edit_requires_confirmed_anchors (test_review_regressions.ReviewRemakeTests.test_direct_video_edit_requires_confirmed_anchors) ... ok
+test_remake_render_blocks_when_step1_anchors_not_confirmed (test_review_regressions.ReviewRemakeTests.test_remake_render_blocks_when_step1_anchors_not_confirmed) ... ok
+test_segments_are_cut_at_matching_source_times (test_review_regressions.ReviewRemakeTests.test_segments_are_cut_at_matching_source_times) ... ok
+test_timed_edit_never_changes_outside_interval (test_review_regressions.ReviewRemakeTests.test_timed_edit_never_changes_outside_interval) ... ok
+test_busy_guard_never_stops_unrelated_session (test_review_remote.ReviewRemoteTests.test_busy_guard_never_stops_unrelated_session) ... ♻️ 复用 Colab 会话：existing
+ok
+test_resume_attaches_to_matching_live_run_without_upload (test_review_remote.ReviewRemoteTests.test_resume_attaches_to_matching_live_run_without_upload) ... [ 0.0 分] running · a:done
+ok
+test_runner_done_with_pending_collection_never_stops_vm (test_review_remote.ReviewRemoteTests.test_runner_done_with_pending_collection_never_stops_vm) ... [ 0.0 分] running · a:collecting
+ok
+test_source_archive_excludes_user_media_and_secrets (test_review_remote.ReviewRemoteTests.test_source_archive_excludes_user_media_and_secrets) ... ok
+test_recreate_mode_packs_short_cuts_and_builds_640p_silent_proxy (test_ripple_adapter.TwoStepRippleRemakeTests.test_recreate_mode_packs_short_cuts_and_builds_640p_silent_proxy) ... ok
+test_ripple_graph_passes_schema_preflight_and_tracks_dependencies (test_ripple_adapter.TwoStepRippleRemakeTests.test_ripple_graph_passes_schema_preflight_and_tracks_dependencies) ... ok
+test_two_step_anchor_generation_and_confirmed_ripple_compilation (test_ripple_adapter.TwoStepRippleRemakeTests.test_two_step_anchor_generation_and_confirmed_ripple_compilation) ... ok
+test_director_export (test_studio.StudioUnitTests.test_director_export) ... ok
+test_director_manifest (test_studio.StudioUnitTests.test_director_manifest) ... ok
+test_invalid_seconds (test_studio.StudioUnitTests.test_invalid_seconds) ... ok
+test_missing_reference_mentions (test_studio.StudioUnitTests.test_missing_reference_mentions) ... ok
+test_ui_api_format_required (test_studio.StudioUnitTests.test_ui_api_format_required) ... ok
+test_voice_references_and_seed_are_wired (test_tts.TTSTests.test_voice_references_and_seed_are_wired) ... ok
+test_confirmed_anchors_and_source_video_are_connected_to_ripple (test_video_edit.VideoEditTests.test_confirmed_anchors_and_source_video_are_connected_to_ripple) ... ok
+
+----------------------------------------------------------------------
+Ran 88 tests in 5.258s
+
+OK

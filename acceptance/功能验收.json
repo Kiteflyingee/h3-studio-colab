@@ -1,0 +1,299 @@
+{
+  "version": "4.0.0-pure-h3-ripple",
+  "date": "2026-11-17",
+  "gpu_test_executed": false,
+  "environment": "CPU / FFmpeg only; no ComfyUI or user Colab attached",
+  "capabilities": [
+    {
+      "capability": "文生视频",
+      "profile": "h3-fl2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_h3_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "图生视频/首尾帧",
+      "profile": "h3-fl2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_h3_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "人物/场景/视频/音频参考",
+      "profile": "h3-ref2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_h3_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "图片生成/编辑 LoRA",
+      "profile": "ph3-lora-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_picture_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "图片独立模型",
+      "profile": "ph3-standalone-w4a8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_picture_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "TTS/参考声音",
+      "profile": "h3-tts32-native",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_tts.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "生成式视频延伸",
+      "profile": "h3-ref2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_extension.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "多镜头导演/续接/恢复",
+      "profile": "h3-ref2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_director_continuity.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "两步确认式爆款视频复刻（Step 1 关键帧改图对齐 + Step 2 H3 Ripple 6步扩散）",
+      "profile": "ph3-lora-int8 + h3-ripple",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_ripple_adapter.py",
+        "tests/test_video_edit.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "Step 1 输出原帧|改后帧对比图人工确认后，Step 2 复用 FL2VA 底模 6 步扩散全片；真实 GPU 画质待试跑复核"
+    },
+    {
+      "capability": "WepeNerd H3 Ripple 预编辑关键帧传播",
+      "profile": "h3-ripple",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_ripple_adapter.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "6 步 LCM 关键帧传播（支持 1-16 锚点及原片|成片对比视频）；真实 GPU 输出待首次试跑复核"
+    },
+    {
+      "capability": "多时间点参考",
+      "profile": "h3-guides",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_h3_guides.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "ControlNet Union",
+      "profile": "h3-control-union",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_h3_control.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "FastH3 Omni8step",
+      "profile": "fasth3-omni-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_acceleration_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "PRISM PDMD",
+      "profile": "prism-dmad-pdmd-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_acceleration_profiles.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实GPU输出尚未生成和人工复核"
+    },
+    {
+      "capability": "准确字幕/固定位置画面文字",
+      "profile": "media-only",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": true,
+      "gpu_verified": false,
+      "gpu_applicable": false,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_delivery_edges.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "固定位置叠字与静态清除，不支持跟踪、透视、遮挡"
+    },
+    {
+      "capability": "旁白混音/原声保留",
+      "profile": "media-only",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": true,
+      "gpu_verified": false,
+      "gpu_applicable": false,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_audio_mix.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实CPU媒体流程通过；字幕/声音仍需人工复核"
+    },
+    {
+      "capability": "批量文案版本/CPU复刻CLI",
+      "profile": "media-only",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": true,
+      "gpu_verified": false,
+      "gpu_applicable": false,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_cli_examples.py",
+        "tests/test_colab_remake_transport.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "真实CPU媒体流程通过；字幕/声音仍需人工复核"
+    },
+    {
+      "capability": "Colab 传输/生命周期",
+      "profile": "h3-fl2va-int8",
+      "version": "dependencies.lock.json + models/catalog.json",
+      "code_ready": true,
+      "environment_ready": null,
+      "gpu_verified": false,
+      "gpu_applicable": true,
+      "quality_reviewed": false,
+      "evidence": [
+        "tests/test_backend_contract.py",
+        "tests/test_colab_remake_transport.py",
+        "tests/test_colab_skill_routes.py",
+        "acceptance/verification.json"
+      ],
+      "limitations": "用隔离文件系统执行实际远端 Python 进程和 FFmpeg，验证双版本字幕成片、导演合成、重连下载及停止。真实 Google Colab 和 GPU 尚未验收。"
+    }
+  ],
+  "excluded": [
+    {
+      "capability": "自动语义目标理解/VLM",
+      "code_ready": false,
+      "reason": "未接入语义服务；可导入人工修订分析"
+    },
+    {
+      "capability": "自动目标分割/跟踪与透视场景文字",
+      "code_ready": false,
+      "reason": "固定位置合成不能替代这些能力"
+    },
+    {
+      "capability": "口型同步/原片人声分离",
+      "code_ready": false,
+      "reason": "旁白混音不包含口型或BGM分离"
+    }
+  ]
+}

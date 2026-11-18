@@ -7,10 +7,15 @@
 <p align="center">
   <a href="https://github.com/Kiteflyingee/h3-studio-colab/actions/workflows/ci.yml"><img src="https://github.com/Kiteflyingee/h3-studio-colab/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/agent%20skill-%2Fh3--studio--colab-0E8A16" alt="Agent Skill" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" /></a>
 </p>
 
-在没有独显的 Mac 或轻薄本上，通过命令行或 AI Agent 调用 Google Colab 云端 GPU，完成**短视频换人/换商品改版、多镜头分镜生成、配音合成与字幕替换**（本地有显卡时也可以加 `--backend local` 连本地环境跑）。
+调用 Google Colab 云端 GPU（或通过 `--backend local` 连接本地环境），完成**短视频换人/换商品改版、多镜头分镜生成、配音合成与字幕替换**。
+
+这个仓库同时支持两种使用方式：
+- **作为 AI Agent Skill 安装**：装进 Antigravity、Claude Code、Codex、Cursor 等支持 Skills 的工具里，通过 `/h3-studio-colab` 或自然语言对话自动编排任务、出关键帧对比图确认并渲染成片。
+- **作为独立 CLI 工具运行**：直接在终端执行 [`scripts/h3studio.py`](scripts/h3studio.py) 子命令，手动控制每一步参数与会话。
 
 ---
 
@@ -29,31 +34,54 @@
 
 ## 安装与环境准备
 
-### 1. 本机基础环境
-
-本机需要 **Python 3.10+**、`ffmpeg`，以及用于连接云端 GPU 的 [`google-colab-cli`](https://pypi.org/project/google-colab-cli/)：
+无论是给 AI Agent 当技能调用，还是自己在终端敲命令行，本机都需要 **Python 3.10+**、`ffmpeg` 以及登录好的 [`google-colab-cli`](https://pypi.org/project/google-colab-cli/)：
 
 ```bash
-git clone https://github.com/Kiteflyingee/h3-studio-colab.git
-cd h3-studio-colab
-
-pip install -r requirements.txt
 uv tool install google-colab-cli
 colab auth login
 ```
 
-验证连接状态：
+### 方式一：安装为 AI Agent Skill
+
+支持所有兼容 `SKILL.md` 规范的客户端（Antigravity、Claude Code、Codex、Cursor 等）。
+
+**1. 使用 `skills` CLI 安装**
 
 ```bash
-python scripts/h3studio.py check
+npx skills add Kiteflyingee/h3-studio-colab
 ```
 
-### 2. 作为 AI Agent 技能使用（可选）
-
-如果你用 Claude Code、Cursor、Codex 或 Antigravity，直接把仓库放到项目的 `.agents/skills/`（或全局 `~/.agents/skills/`）下就能通过 `/h3-studio-colab` 调用：
+**2. 或直接用 Git 克隆到对应的技能目录**
 
 ```bash
+# Antigravity / Codex / Cursor 等（当前工作区安装；全局可改为 ~/.agents/skills/h3-studio-colab）
 git clone https://github.com/Kiteflyingee/h3-studio-colab.git .agents/skills/h3-studio-colab
+pip install -r .agents/skills/h3-studio-colab/requirements.txt
+
+# Claude Code（全局安装；单项目可改为 .claude/skills/h3-studio-colab）
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git ~/.claude/skills/h3-studio-colab
+pip install -r ~/.claude/skills/h3-studio-colab/requirements.txt
+```
+
+**3. 在 Agent 对话里怎么用**
+
+安装完成后，在聊天框输入 `/h3-studio-colab` 或直接把视频/参考图发给 Agent 提需求即可，Agent 会按 [`SKILL.md`](SKILL.md) 里的流程自动组织任务清单并调用脚本：
+
+- **视频换人 / 换商品**：例如 *「把 `source.mp4` 里的主角换成 `role.png`，手里的瓶子换成 `product.png`，保持原视频镜头和背景」*。Agent 会自动先执行第一步切镜并生成「原帧 | 改后帧」对比图发给你检查，不会上来直接跑全片；某张关键帧不理想可以直接让它单张重抽，确认无误后再复用同一台热机合成整片。
+- **画风重制或原创短片**：例如 *「参考这两张设定图把原视频重制成 720P 2D 动画风格」*，或者 *「按这段分镜脚本出一条 3 镜头短片，先编译时间线给我看」*。
+- **算力保护与会话收尾**：涉及 2 个及以上视频镜头渲染时，Agent 会先和你确认分辨率和镜头数再执行；成片跑完后会询问继续保留热机还是立即关机释放 Colab 会话。
+
+### 方式二：作为独立 CLI 工具安装
+
+不通过 AI Agent、直接在终端手动运行时，克隆仓库并安装依赖即可：
+
+```bash
+git clone https://github.com/Kiteflyingee/h3-studio-colab.git
+cd h3-studio-colab
+pip install -r requirements.txt
+
+# 检查 Colab 登录态与剩余计算单元
+python scripts/h3studio.py check
 ```
 
 ---

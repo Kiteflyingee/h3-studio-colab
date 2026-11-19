@@ -18,23 +18,23 @@
   <circle cx="68" cy="61" r="4" fill="#3FB950" />
   <text x="80" y="65" fill="#C9D1D9" font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12">CLI Tool &amp; AI Agent Skill</text>
 
-  <text x="52" y="128" fill="#F0F6FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="44" font-weight="700" letter-spacing="-0.5">
+  <text x="52" y="128" fill="#F0F6FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="44" font-weight="700" letter-spacing="-0.5">
     H3 Studio Colab
   </text>
 
-  <text x="52" y="168" fill="#C9D1D9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="500">
-    基于 Google Colab GPU 的视频改版与多镜头生成工具
+  <text x="52" y="168" fill="#C9D1D9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="18" font-weight="500">
+    Video remake &amp; multi-shot generation on Google Colab GPUs
   </text>
 
-  <text x="52" y="204" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14">
-    支持安装为 AI Agent Skill 对话调用，也可直接在终端通过 CLI 运行；
+  <text x="52" y="204" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="14">
+    Install as a Plugin / AI Agent Skill for chat, or run directly from your terminal;
   </text>
-  <text x="52" y="226" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14">
-    视频改版先出关键帧对比图确认人物与商品，再渲染成片与配音字幕。
+  <text x="52" y="226" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="14">
+    preview side-by-side anchor frames first, then render full video, voiceover, and subtitles.
   </text>
 
   <!-- Plain Technical Tags -->
-  <g font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'PingFang SC', sans-serif" font-size="12" fill="#8B949E">
+  <g font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12" fill="#8B949E">
     <rect x="52" y="252" width="154" height="28" rx="6" fill="#161B22" stroke="#30363D" />
     <text x="129" y="270" fill="#79C0FF" text-anchor="middle">/h3-studio-colab</text>
 
@@ -42,10 +42,10 @@
     <text x="272" y="270" text-anchor="middle">h3studio.py</text>
 
     <rect x="338" y="252" width="128" height="28" rx="6" fill="#161B22" stroke="#30363D" />
-    <text x="402" y="270" text-anchor="middle">关键帧对比确认</text>
+    <text x="402" y="270" text-anchor="middle">Anchor Preview</text>
 
-    <rect x="476" y="252" width="112" height="28" rx="6" fill="#161B22" stroke="#30363D" />
-    <text x="532" y="270" text-anchor="middle">多镜头生成</text>
+    <rect x="476" y="252" width="124" height="28" rx="6" fill="#161B22" stroke="#30363D" />
+    <text x="538" y="270" text-anchor="middle">Multi-Shot CLI</text>
   </g>
 
   <!-- Right Side: Authentic Terminal Window -->
@@ -57,17 +57,17 @@
     <circle cx="50" cy="17" r="5" fill="#27C93F" />
     <text x="262" y="21" fill="#6E7681" font-family="'SF Mono', Menlo, Consolas, monospace" font-size="11.5" text-anchor="middle">Skill &amp; CLI</text>
 
-    <g font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, 'PingFang SC', monospace" font-size="12">
-      <text x="20" y="60" fill="#6E7681"># 1. 安装为 Agent Skill（或直接克隆跑 CLI）</text>
+    <g font-family="'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="11.5">
+      <text x="20" y="60" fill="#6E7681"># 1. Install as an Agent Skill (or clone to run CLI)</text>
       <text x="20" y="80" fill="#79C0FF">$ npx skills add Kiteflyingee/h3-studio-colab</text>
 
-      <text x="20" y="114" fill="#6E7681"># 2. 先切镜头生成关键帧对比图，确认形象无误</text>
+      <text x="20" y="114" fill="#6E7681"># 2. Preview edited keyframes before full video render</text>
       <text x="20" y="134" fill="#79C0FF">$ python scripts/h3studio.py remake-anchors job.json --gpu L4</text>
-      <text x="20" y="154" fill="#3FB950">✓ 已保存 anchors/remake_001_compare.jpg (原帧 | 改后帧)</text>
+      <text x="20" y="154" fill="#3FB950">✓ Saved anchors/remake_001_compare.jpg (original | edited)</text>
 
-      <text x="20" y="188" fill="#6E7681"># 3. 复用同一台热机渲染整片并合成字幕配音</text>
+      <text x="20" y="188" fill="#6E7681"># 3. Reuse warm session to render full video &amp; subtitles</text>
       <text x="20" y="208" fill="#79C0FF">$ python scripts/h3studio.py remake-render job.json --session s1 -o out.mp4</text>
-      <text x="20" y="228" fill="#3FB950">✓ 完成输出 out.mp4 (720P, 24fps)</text>
+      <text x="20" y="228" fill="#3FB950">✓ Wrote out.mp4 (720P, 24fps)</text>
     </g>
   </g>
 </svg>
